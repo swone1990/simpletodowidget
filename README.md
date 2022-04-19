@@ -2,5 +2,5 @@
 
 Todo:
  - Implement RoomDB
- - Implement a Chronjob
+ - Implement a Workmangager for refreshing data
  - Make the Appliation Widget only
