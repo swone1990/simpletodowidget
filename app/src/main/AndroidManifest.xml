@@ -14,7 +14,7 @@
         android:theme="@style/Theme.SimpleTodoWidget"
         android:usesCleartextTraffic="true">
         <receiver
-            android:name=".todo.widget.TodoHomeWidget"
+            android:name=".todo.widget.TodoHomeWidgetProvider"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -25,7 +25,7 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/todo_home_widget_info" />
         </receiver>
-        <service android:name=".todo.widget.TodoLifeCycleService"/>
+        <service android:name=".todo.adapter.TodoRemoteViewsService" android:permission="android.permission.BIND_REMOTEVIEWS"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

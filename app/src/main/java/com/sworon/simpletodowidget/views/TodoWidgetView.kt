@@ -8,36 +8,34 @@ import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
 import com.sworon.simpletodowidget.R
-import com.sworon.simpletodowidget.todo.widget.TodoHomeWidget
+import com.sworon.simpletodowidget.todo.widget.TodoHomeWidgetProvider
 
+
+//TODO: Want be needed anymore, because it will be a widget-only-application
 @SuppressLint("RemoteViewLayout")
 class TodoWidgetView constructor(
     val context: Context,
     private val packageName: String,
     private val componentName: ComponentName,
-) : RemoteViews(packageName, R.layout.todo_home_widget) {
+) : RemoteViews(packageName, R.layout.widget_layout) {
 
 
     fun setText(text: String) {
         buildBaseRemoteView(context)
-        setTextViewText(R.id.appwidget_text, text)
+        setTextViewText(R.id.itemTitle, text)
         updateView()
     }
 
     private fun buildBaseRemoteView(context: Context) {
 
-        var intent = Intent(context, TodoHomeWidget::class.java)
+        var intent = Intent(context, TodoHomeWidgetProvider::class.java)
         intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
 
-        val ids = AppWidgetManager.getInstance(context).getAppWidgetIds(ComponentName(context, TodoHomeWidget::class.java))
+        val ids = AppWidgetManager.getInstance(context).getAppWidgetIds(ComponentName(context, TodoHomeWidgetProvider::class.java))
         intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
 
         var pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-        //setOnClickPendingIntent(R.id.widgetHeaderRefreshImageView, pendingIntent)
 
-        //intent = Intent(context, SplashScreenActivity::class.java)
-        //pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
-        //setOnClickPendingIntent(R.id.widgetContentLinearLayout, pendingIntent)
     }
 
     private fun updateView() {

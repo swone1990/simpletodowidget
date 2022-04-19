@@ -6,8 +6,10 @@
         <entry key="..\:/devel/repos/SimpleTodoWidget/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/devel/repos/SimpleTodoWidget/app/src/main/res/layout/list_child.xml" value="0.25" />
         <entry key="..\:/devel/repos/SimpleTodoWidget/app/src/main/res/layout/list_group.xml" value="0.25" />
+        <entry key="..\:/devel/repos/SimpleTodoWidget/app/src/main/res/layout/list_widget.xml" value="0.1" />
         <entry key="..\:/devel/repos/SimpleTodoWidget/app/src/main/res/layout/new_app_widget.xml" value="0.109375" />
         <entry key="..\:/devel/repos/SimpleTodoWidget/app/src/main/res/layout/todo_home_widget.xml" value="0.1" />
+        <entry key="..\:/devel/repos/SimpleTodoWidget/app/src/main/res/layout/widget_layout.xml" value="0.25" />
       </map>
     </option>
   </component>
