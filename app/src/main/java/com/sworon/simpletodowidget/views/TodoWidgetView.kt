@@ -1,4 +1,4 @@
-package com.sworon.simpletodowidget.todo.widget
+package com.sworon.simpletodowidget.views
 
 import android.annotation.SuppressLint
 import android.app.PendingIntent
@@ -8,6 +8,7 @@ import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
 import com.sworon.simpletodowidget.R
+import com.sworon.simpletodowidget.todo.widget.TodoHomeWidget
 
 @SuppressLint("RemoteViewLayout")
 class TodoWidgetView constructor(

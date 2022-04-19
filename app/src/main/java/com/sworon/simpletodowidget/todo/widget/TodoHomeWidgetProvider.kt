@@ -5,6 +5,10 @@ import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import android.widget.RemoteViews
+import com.sworon.simpletodowidget.R
+import com.sworon.simpletodowidget.service.BackendTodoService
+import com.sworon.simpletodowidget.service.TodoService
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -27,9 +31,9 @@ class TodoHomeWidget : AppWidgetProvider() {
 
     private fun startUpdateService(context: Context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            context.startForegroundService(Intent(context, TodoLifeCycleService::class.java))
+            context.startForegroundService(Intent(context, TodoService::class.java))
         } else {
-            context.startService(Intent(context, TodoLifeCycleService::class.java))
+            context.startService(Intent(context, TodoService::class.java))
         }
     }
 
