@@ -1,8 +1,10 @@
 package com.sworon.simpletodowidget.todo.adapter
 
 import android.content.Context
+import android.provider.CalendarContract
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
+import androidx.compose.ui.graphics.Color
 import com.sworon.simpletodowidget.R
 import com.sworon.simpletodowidget.service.TodoApiInterface
 import com.sworon.simpletodowidget.todo.model.DailyTodos
@@ -32,7 +34,10 @@ class TodoRemoteServiceFactory constructor(
 //        widgetItems = repository.data.value.map { WidgetItem(it.name) }
         val todoCall = TodoApiInterface.create()
         var response = todoCall.getTodos().execute()
-        widgetItems = response.body()!!.data.map { WidgetItem((it.date)) }
+
+        widgetItems = response.body()!!.data.map {
+            WidgetItem((it.date))
+        }
         todos = generateTodoDataForWidget(response.body()!!.data)
     }
 
@@ -48,11 +53,16 @@ class TodoRemoteServiceFactory constructor(
     override fun getViewAt(p0: Int): RemoteViews {
         return RemoteViews(mContext!!.packageName, R.layout.list_child).apply {
             if (todos.get(p0).size < 2) {
-                setTextViewText(R.id.itemTitle, todos.get(p0).get(0))
+              setTextViewText(R.id.itemTitle, todos.get(p0).get(0))
+                setTextColor(R.id.itemTitle, Color.Blue.hashCode())
+                setTextViewText(R.id.itemState, "")
+
 
             } else if (todos.get(p0).size > 1) {
                 setTextViewText(R.id.itemTitle, todos.get(p0).get(0))
+                setTextColor(R.id.itemTitle, Color.Black.hashCode())
                 setTextViewText(R.id.itemState, todos.get(p0).get(1))
+
             }
         }
     }
@@ -81,7 +91,7 @@ class TodoRemoteServiceFactory constructor(
 
         dailyTodos.forEach { dailyTodos ->
             var dateList: MutableList<String> = ArrayList()
-            dateList.add(dailyTodos.date)
+            dateList.add(dailyTodos.getDateString())
 
             dataForWidget.add(dateList)
             dailyTodos.todos.forEach {

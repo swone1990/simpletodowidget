@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<ToDoResponse>, response: Response<ToDoResponse>) {
                 val todoResponse = response.body()
                 val dailyTodos = todoResponse!!.data
-                _binding.textview.setText(dailyTodos.get(0).date)
+                _binding.textview.setText(dailyTodos.get(0).getDateString())
             }
 
             override fun onFailure(call: Call<ToDoResponse>, t: Throwable) {
